@@ -1,0 +1,57 @@
+# Default configuration for Diagnostic Imaging Systems
+
+# Ultrasound settings
+ultrasound:
+  default_frequency: 7.5  # MHz
+  default_depth: 100  # mm
+  default_gain: 1.0
+  signal_processing:
+    sampling_rate: 40000000  # Hz
+    dynamic_range: 60  # dB
+    persistence: 2
+
+# X-ray settings
+xray:
+  default_kvp: 80
+  default_ma: 200
+  default_exposure_time: 0.05  # seconds
+  default_sfd: 100  # cm
+  detector:
+    resolution: [2048, 2048]
+    bit_depth: 14
+
+# OCT settings
+oct:
+  center_wavelength: 840  # nm
+  bandwidth: 50  # nm
+  scan_depth: 2.5  # mm
+  default_scan_pattern: "b_scan"
+  processing:
+    zero_padding_factor: 2
+    window_type: "hanning"
+
+# Thermographic settings
+thermographic:
+  default_emissivity: 0.98
+  default_distance: 1.0  # meters
+  ambient_temperature: 22.0  # Celsius
+  inflammation_detection:
+    temperature_threshold: 1.5  # Celsius
+    min_region_size: 100  # pixels
+    severity_thresholds:
+      mild: 1.0
+      moderate: 1.5
+      severe: 2.5
+
+# Calibration settings
+calibration:
+  ultrasound_interval_days: 30
+  xray_interval_days: 365
+  oct_interval_days: 90
+  thermal_interval_days: 365
+
+# Logging settings
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "imaging_systems.log"
